@@ -1,0 +1,23 @@
+{
+    "name": "ctg-frame",
+    "version": "0.0.1",
+    "description": "Ember.js Component to generate images with caption.",
+    "keywords": [
+        "ember",
+        "image",
+        "generator",
+        "canvas"
+    ],
+    "homepage": "https://github.com/k3nsei/ctg-frame",
+    "authors": [
+        "Piotr Stępniewski <k3nsei.pl@gmail.com>"
+    ],
+    "license": "GPL-3.0",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}

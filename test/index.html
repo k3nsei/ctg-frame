@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ember Starter Kit</title>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/united/bootstrap.min.css" rel="stylesheet">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"></script>
+    <script src="http://builds.emberjs.com/tags/v1.7.0/ember.js"></script>
+    <script src="./ctg-frame.js"></script>
+
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://rawgit.com/ericdrowell/KineticJS/master/kinetic.min.js"></script>
+</head>
+<body>
+
+<script type="text/x-handlebars">
+    <div class="container" style="margin: 20px auto;">
+        <div class="row">
+            {{outlet}}
+        </div>
+    </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+    <div class="col-md-6">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="ctgFrameTitle" class="col-sm-2 control-label">Title:</label>
+                <div class="col-sm-10">
+                    {{input id="ctgFrameTitle" class="form-control" type="text" value=ctgFrameTitle}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ctgFrameSubTitle" class="col-sm-2 control-label">Subtitle:</label>
+                <div class="col-sm-10">
+                    {{input id="ctgFrameSubTitle" class="form-control" type="text" value=ctgFrameSubTitle}}
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        {{ctg-frame captionTop=ctgFrameTitle captionBottom=ctgFrameSubTitle img='./cat.jpg'}}
+    </div>
+</script>
+
+<script type="text/javascript">
+    var App = Ember.Application.create();
+</script>
+
+</body>
+</html>

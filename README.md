@@ -8,4 +8,4 @@ Ember.js Component to generate images with caption.
 
 Here's a [demo][1] jsbin.
 
-[1]: http://emberjs.jsbin.com/tonawu/1
+[1]: http://jsbin.com/tonawu/5

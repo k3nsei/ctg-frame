@@ -5,17 +5,23 @@ var CtgFrameController = Ember.ObjectController.extend({});
 var ctgFrameComponent = Ember.Component.extend({
     tagName: 'div',
     captionTop: '',
+    captionTopSize: 28,
+    captionTopColor: '#299bcc',
     captionBottom: '',
+    captionBottomSize: 22,
+    captionBottomColor: '#FFFFFF',
+    imgMaxWidth: 536,
     img: '',
     didInsertElement: function() {
         var self = this;
         var imageObj = new Image();
         if(this.get('img')) {
             imageObj.onload = function() {
+                var scale = (imageObj.width > self.get('imgMaxWidth')) ? (self.get('imgMaxWidth') / imageObj.width) : 1;
                 var stage = new Kinetic.Stage({
                     container: self.get('element').id,
-                    width: imageObj.width + 48,
-                    height: imageObj.height + 48
+                    width: (imageObj.width * scale) + 44,
+                    height: (imageObj.height * scale) + 44
                 });
 
                 var layer = new Kinetic.Layer();
@@ -23,6 +29,13 @@ var ctgFrameComponent = Ember.Component.extend({
                 var baseImg = new Kinetic.Image({
                     x: 22,
                     y: 22,
+                    width: imageObj.width,
+                    height: imageObj.height,
+                    scaleX: scale,
+                    scaleY: scale,
+                    stroke: '#eee',
+                    strokeWidth: 4,
+                    strokeScaleEnabled: false,
                     image: imageObj
                 });
 
@@ -31,10 +44,9 @@ var ctgFrameComponent = Ember.Component.extend({
                     x: 10,
                     y: stage.getHeight() - 12,
                     text: self.get('captionTop') || '',
-                    fontSize: 28,
-                    fontFamily: 'Ubuntu',
-                    fontWeight: 'bold',
-                    fill: '#8560a8',
+                    fontFamily: 'bebas_neueregular, Ubuntu',
+                    fontSize: self.get('captionTopSize'),
+                    fill: self.get('captionTopColor'),
                     align: 'center',
                     wrap: 'word'
                 });
@@ -44,9 +56,9 @@ var ctgFrameComponent = Ember.Component.extend({
                     x: 10,
                     y: captionTop.getPosition().y + captionTop.getHeight() + 8,
                     text: self.get('captionBottom') || '',
-                    fontSize: 22,
-                    fontFamily: 'Ubuntu',
-                    fill: '#FFFFFF',
+                    fontFamily: 'bebas_neueregular, Ubuntu',
+                    fontSize: self.get('captionBottomSize'),
+                    fill: self.get('captionBottomColor'),
                     align: 'center',
                     wrap: 'word'
                 });
@@ -69,7 +81,7 @@ var ctgFrameComponent = Ember.Component.extend({
             };
             imageObj.src = this.get('img');
         }
-    }.observes('captionTop', 'captionBottom')
+    }.observes('captionTop', 'captionTopSize', 'captionTopColor', 'captionBottom', 'captionBottomSize', 'captionBottomColor', 'imgMaxWidth')
 });
 
 /* global ctgFrameComponent */

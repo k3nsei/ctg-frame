@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var coffee = require('gulp-coffee');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var rimraf = require('gulp-rimraf');
@@ -7,6 +8,12 @@ var wrap = require('gulp-wrap');
 
 gulp.task('clean-dist', function (cb) {
     rimraf('./dist', cb);
+});
+
+gulp.task('coffee', function() {
+    gulp.src('./src/server-side/ctg-frame.coffee')
+        .pipe(coffee())
+        .pipe(gulp.dest('./dist/server-side/'))
 });
 
 gulp.task('scripts', function () {
@@ -19,4 +26,4 @@ gulp.task('scripts', function () {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['clean-dist', 'scripts']);
+gulp.task('default', ['clean-dist', 'scripts', 'coffee']);
